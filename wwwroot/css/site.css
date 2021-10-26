@@ -1,0 +1,417 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a, .btn-link {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+.colour__ex{
+    color: rgb(180, 180, 255);
+}
+
+.learn__header{
+    margin-left: 50px;
+    padding-top: 15px;
+    color: rgb(67, 67, 67);
+}
+
+.accordion-button.collapsed::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    position: relative;
+    background-repeat: no-repeat;
+  }
+
+  .accordion-button:not(.collapsed)::after{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    transform: rotate(90deg);
+}
+
+.accordion-item .accordion-button{
+    height: 35px;
+}
+
+.last__review{
+    padding-top: 10px;
+    font-size: 12px;
+    color: rgb(94, 94, 94);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 100%;
+    height: 64px;
+}
+
+.header__left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 128px;
+    height: 27px;
+    padding-left: 30px;
+
+}
+
+.header__right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
+.header__right__ui{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #0366d6;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.header__right__ui p{
+    padding-top: 2px;
+    text-align: center;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+}
+
+.body{
+    background-color: #F2F3F8;
+}
+
+.health__record{
+    padding: 7px;
+    width: 98.5%;
+    height: 200px;
+    margin: 10px;
+    background-color: white;
+}
+
+
+
+.health__record__items{
+    width: 70%;
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.health__record__items__demagraphics{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    padding-top: 30px;
+    background: #F7F8FA;
+    border-radius: 4px;
+}
+
+.health__record__items__notes{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    padding-top: 30px;
+    background: #F7F8FA;
+    border-radius: 4px;
+}
+
+.health__record__items__lab{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    padding-top: 30px;
+    background: #F7F8FA;
+    border-radius: 4px;
+}
+
+.health__record__items__medication{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    padding-top: 30px;
+    background: #F7F8FA;
+    border-radius: 4px;
+}
+.health__record__vitals__header{
+  display: flex;
+  padding-right: 2px;
+}
+
+.health__record__vitals__items{
+    width: 55%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.health__record__vitals__measure{
+    display: flex;
+    height: 45px;
+    padding-left: 10px;
+}
+.measurements{
+    padding-left: 10px;
+}
+.measurements p{
+    color: #6cb0fd;
+}
+.patient__infor{
+    width: 98.5%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin: 10px;
+}
+.consult__chat__header{
+    width: 98.5%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin: 10px;
+}
+
+.consult__chat__header__left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5px;
+}
+.consult__chat__header__left svg{
+    width: 50px;
+}
+
+.consult__chat__header__left h6{
+    color: #595D6E;
+    font-weight: bolder;
+}
+
+.consult__chat__header__right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
+.consult__chat__header__right > svg{
+   margin-right: 10px;
+}
+
+.consult__chat__header__right__chat{
+    width: 102px;
+    background: #ffc8bc;
+    border-radius: 3px;
+}
+
+.end__chat{
+    color: rgba(255, 59, 16, 0.72);
+}
+
+.cancel-btn{
+    width: 25px;
+    border: 1px solid rgb(245, 242, 242);
+    border-radius: 50%;
+}
+.consult__chat__header__right__chat > svg {
+    margin-left: 5px;
+    color: rgba(255, 59, 16, 0.72);
+}
+
+.chat__contents{
+    display: flex;
+    margin-left: 10px;
+    padding-left: 10px;
+    background: #F7F8FA;
+}
+
+.chat__contents__left{
+    width: 35%;
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.chat__contents__left__items{
+    padding-top: 10px;
+}
+
+.chat__contents__left__complains li{
+    list-style: none;
+}
+.chat__contents__left__complains{
+    width: 390px;
+    height: 158px;
+    padding: 10px;
+    border-radius: 3px;
+    background: white;
+}
+
+.chat__contents__right{
+    width: 65%;
+    height: 685px;
+    border: 1px solid rgb(241, 241, 241);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.chat__contents__right__messages{
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.chat__contents__right__messages__sender__content{
+    max-width: 370px;
+    background: white;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.chat__contents__right__messages__sender__content .message__time{
+   display: flex;
+   justify-content: end;
+   padding-bottom: 0;
+}
+
+.chat__contents__right__messages__receive{
+    display: flex;
+    justify-content: end;
+}
+
+.chat__contents__right__messages__receiver__content{
+    max-width: 370px;
+    background: rgba(0, 176, 231, 0.1);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.chat__contents__right__messages__receiver__content .message__time{
+   display: flex;
+   justify-content: end;
+   padding-bottom: 0;
+}
+.chat__input{
+    display: flex;
+}
+.chat__input__message{
+    display: flex;
+    width: 100%;
+}
+
+.chat__input__message > input{
+    width: 94%;
+    height: 35px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 4px;
+}
+.chat__input__icons{
+    height: 35px;
+    width: 30px;
+    padding-top: 2px;
+    text-align: center;
+    border-radius: 3px;
+    background: white;
+}
+.chat__input{
+    position: relative;
+}
+
+.footer{
+    width: 100%;
+    height: 50px;
+    margin-top: 65px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copyright__item{
+    color: #74788D;
+}
+
+.add__item{
+    position: relative;
+    width: 1440px;
+    height: 1469px;
+    background: #F2F3F8;
+}
+
+.main__items{
+    display: flex;
+}
+
+.main__item__left{
+    width: 271px;
+    height: 1334px;
+    background: #ffffff;
+}
+
+.main__item__left ul li{
+    list-style: none;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.logo{
+    position: absolute;
+    left: 2.5%;
+    right: 88.61%;
+    top: 32.93%;
+    bottom: 34.15%;
+    background: url(Logo.png);
+}
