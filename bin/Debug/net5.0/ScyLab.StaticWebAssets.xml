@@ -1,3 +1,5 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\elimens\Desktop\Projects\ScyLab\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="C:\Users\elimens\Desktop\Projects\Scylab\__ScyLab\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\elimens\.nuget\packages\mudblazor\6.0.2\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\elimens\.nuget\packages\syncfusion.blazor\19.3.0.47\build\..\staticwebassets\" />
 </StaticWebAssets>

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScyLab", "ScyLab.csproj", "{CD26D73D-038D-44A0-BC74-FD8EAE50E1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScyLab", "ScyLab.csproj", "{CD26D73D-038D-44A0-BC74-FD8EAE50E1DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scylap.Data", "..\EFDataAccess\Scylap.Data.csproj", "{0AAC9F52-354A-44C1-945B-F7ECB269F338}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scylab.Api", "Scylab.Api\Scylab.Api.csproj", "{8718FB34-04E0-430B-8B92-1C1B8A4F68BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CD26D73D-038D-44A0-BC74-FD8EAE50E1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD26D73D-038D-44A0-BC74-FD8EAE50E1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD26D73D-038D-44A0-BC74-FD8EAE50E1DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAC9F52-354A-44C1-945B-F7ECB269F338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAC9F52-354A-44C1-945B-F7ECB269F338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAC9F52-354A-44C1-945B-F7ECB269F338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAC9F52-354A-44C1-945B-F7ECB269F338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8718FB34-04E0-430B-8B92-1C1B8A4F68BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8718FB34-04E0-430B-8B92-1C1B8A4F68BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8718FB34-04E0-430B-8B92-1C1B8A4F68BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8718FB34-04E0-430B-8B92-1C1B8A4F68BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

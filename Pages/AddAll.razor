@@ -1,0 +1,152 @@
+@page "/add_all"
+@using EFDataAccess.Models;
+@inject NavigationManager NavManager;
+@inject ItemService itemservice;
+@inject Scylab.DataItems.IRepository _irepository;
+@using EFDataAccess.DataAccess;
+
+<div class="main__item__right">
+    <div class="main__item__right__form">
+        <div class="add__all">
+            <div class="entries__search__select">
+                <div class="entries">
+                    <h5 class="ent__text mt-2">2 Entries</h5>
+                </div>
+                <div class=" px-3">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="search-input">
+                    <div class="form"><input type="text" class="form-control form-input" placeholder="Search anything..."> <span class="left-pan"><img src="search-icon.svg"></span> </div>
+                </div>
+            </div>
+            <button class="btn-add btn__all">Add</button>
+        </div>
+        <div class="table__sec">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="py-3" scope="col">Title</td>
+                        <td class="py-3" scope="col">Item Category</td>
+                        <td class="py-3" scope="col">Gross Amount</td>
+                        <td class="py-3" scope="col">Quantity</td>
+                        <td class="py-3" scope="col">Unit</td>
+                        <td class="py-3" scope="col">  </td>
+                    </tr>
+                    @foreach (var Item in itemList ?? new List<ItemModel>())
+                    {
+                        <tr>
+                            <td class="py-4">@Item.ItemName</td>
+                            <td class="py-4">@Item.ItemCategory</td>
+                            <td class="py-4">@Item.GrossAmount</td>
+                            <td class="py-4">@Item.ItemQuantity</td>
+                            <td class="py-4">@Item.Unit</td>
+                            <td>
+                                <!-- Example single danger button -->
+                                <div class="btn-group">
+                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img class="three_dots" src="three-dots.svg">
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                        <li><a class="dropdown-item"  href="/item_details/@Item.Id">Update</a></li>
+                                        <li><a class="dropdown-item"data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</a></li>
+                                    </ul>
+                                </div>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Delete Item</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to permanently delete this item
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @onclick="()=>DeleteItem(Item.Id)">Yes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    @*<tr>
+                            <td class="py-4">Typhoid Test</td>
+                            <td class="py-4">Laboratory Test</td>
+                            <td class="py-4">45.00</td>
+                            <td class="py-4">100</td>
+                            <td class="py-4">1</td>
+                            <td>
+                                <!-- Example single danger button -->
+                              <div class="btn-group">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <img class="three_dots"  src="three-dots.svg">
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="/item_details">View</a></li>
+                                  <li><a class="dropdown-item" href="/">Update</a></li>
+                                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#">Delete</a></li>
+                                </ul>
+                              </div>
+                            </td>
+                        </tr>*@
+                </tbody>
+            </table>
+        </div>
+        <div class="table__footer">
+            <div class="table__footer_left">
+                <div class="pagination">
+                    <a href="#" class="pag-icon">&laquo;</a>
+                    <a href="#" class="pag-icon me-2"> &lsaquo;</a>
+                    <a href="#" class="active pag-num">1</a>
+                    <a href="#" class="pag-num">2</a>
+                    <a href="#" class="pag-num">3</a>
+                    <a href="#" class="pag-num">4</a>
+                    <a href="#" class="pag-num">5</a>
+                    <a href="#" class="pag-icon ms-2">&rsaquo;</a>
+                    <a href="#" class="pag-icon">&raquo;</a>
+                </div>
+            </div>
+            <div class="table__footer_right">
+                <!-- Example split danger button -->
+                <div class="btn-group px-2">
+                    <button type="button" class="btn rec-num">10</button>
+                    <button type="button" class="btn rec-num dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <span class="mt-2"><small>Displaying 10 out of 100 records</small></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+    List<ItemModel> itemList = null;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        itemList = await Task.Run(() => itemservice.GetAllItemsAsync());
+    }
+
+    protected async void DeleteItem(Guid Id)
+    {
+        await itemservice.DeleteAsync(Id);
+        NavManager.NavigateTo("/add_all");
+    }
+
+}

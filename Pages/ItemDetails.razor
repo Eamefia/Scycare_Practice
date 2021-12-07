@@ -1,0 +1,91 @@
+@page "/item_details/{Id}"
+@using EFDataAccess.Models;
+@inject NavigationManager NavManager;
+@inject ItemService itemservice;
+@inject Scylab.DataItems.IRepository _irepository;
+@using EFDataAccess.DataAccess;
+
+
+<div class="main__item__right">
+    <div class="main__item__right__details">
+        <div class="item__details">
+            <div class="add__item__header pt-3">
+                <a href="/add_all"><img src="arrow-left.svg"></a>
+                <h3 class="add__item__h3">Item Details</h3>
+            </div>
+            <div class="details">
+                <div class="vertical__table table">
+                    <div class="details__table row">
+                        <div class="col">Item Name</div>
+                        <div class="col">@Item.ItemName </div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Item Category</div>
+                        <div class="col">@Item.ItemCategory</div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Item Quantity</div>
+                        <div class="col">@Item.ItemQuantity</div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Unit</div>
+                        <div class="col">@Item.Unit</div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Net Amount</div>
+                        <div class="col">GHS @Item.NetAmount </div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Tax %</div>
+                        <div class="col">@Item.Tax </div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Discount %</div>
+                        <div class="col">@Item.Discount </div>
+                    </div>
+                    <hr>
+                    <div class="details__table row">
+                        <div class="col">Gross Amount</div>
+                        <div class="col">GHS @Item.GrossAmount</div>
+                    </div>
+                    <hr>
+                </div>
+                
+                <div class="d-flex">
+                    <div class="">Description</div>
+                    <div class="details__left">
+                        <strong class="pb-3 dark">Lorem ipsum dolor sit amet</strong>
+                        <p class="pb-3">
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        </p>
+                        <strong class="pb-3 dark">Lorem ipsum dolor sit amet</strong>
+                        <p>
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public string Id { get; set; }
+    ItemModel Item = new ItemModel();
+    protected override async Task OnInitializedAsync()
+    {
+        Item = await Task.Run(() => itemservice.GetItemAsync(Guid.Parse(Id)));
+    }
+
+    }

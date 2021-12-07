@@ -1,0 +1,244 @@
+@page "/"
+@using Scylab.DataItems;
+@using Syncfusion.Blazor.RichTextEditor;
+@using EFDataAccess.Models;
+@inject NavigationManager NavManager;
+@using Syncfusion.Blazor.DropDowns;
+@inject Scylab.DataItems.IRepository _irepository;
+@inject ItemService itemservice;
+@using EFDataAccess.DataAccess;
+
+<div class="main__item__right">
+    <EditForm Model="@Items">
+        <div class="main__item__right__from">
+            <div class="row">
+                <div class="add__item__header pt-3">
+                    <a href="/add_all"><img src="arrow-left.svg"></a>
+                    <h3 class="add__item__h3">Add Item</h3>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Item name" aria-label="Item name" @bind="@Items.ItemName"/>
+                </div>
+                <div class="col-6">
+                     @*<SfMultiSelect TValue="string[]" TItem="GameFields" Mode="@VisualMode.Default" Placeholder="Favorite Sports" DataSource="@Games">
+                        <MultiSelectFieldSettings Text="Text" Value="ID"></MultiSelectFieldSettings>
+                    </SfMultiSelect>*@
+                    <select  class="form-select" aria-label="Default select example" @bind="@Items.ItemCategory">
+                        <option value="Item Category">Item Category</option>
+                        <option value="Laboratory">Laboratory</option>
+                        <option value="Consultation">Consultation</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Item Quantity" aria-label="Item Quantity" @bind="@Items.ItemQuantity" />
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Unit" aria-label="Unit" @bind="@Items.Unit"  />
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Net Amount" aria-label="Net Amount" @bind="@Items.NetAmount" />
+                </div>
+                <div class="col-6">
+
+                     @*<SfMultiSelect TValue="string[]" TItem="GameFields" Mode="@VisualMode.Default" Placeholder="Favorite Sports" DataSource="@Games">
+                         <MultiSelectFieldSettings Text="Text" Value="ID"></MultiSelectFieldSettings>
+                     </SfMultiSelect>*@
+                   <select  class="form-select" aria-label="Default select example" @bind="@Items.Tax">
+                        <option selected>Tax</option>
+                        <option>VAT</option>
+                        <option>Direct Payment</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Gross Amount" aria-label="Gross Amount" disabled value="@GrossAmount"/>
+                </div>
+                <div class="col-6">
+                    <select  class="form-select" aria-label="Default select example" @bind="@Items.Discount" >
+                        <option>Discount</option>
+                        <option>Chrismass</option>
+                        <option>Fast sales</option>
+                    </select>
+                </div>
+                @*<div class="col-6">
+                    <SfMultiSelect TValue="string[]" TItem="GameFields" Mode="@VisualMode.Default" Placeholder="Favorite Sports" DataSource="@Games">
+                        <MultiSelectFieldSettings Text="Text" Value="ID"></MultiSelectFieldSettings>
+                    </SfMultiSelect>
+                </div>
+                <div class="col-6 mt-5">
+                  <select class="form-select" multiple aria-label="size 3 select example">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                  </select>
+                </div>*@
+                <div class="rich__text">
+                    <SfRichTextEditor>
+                        <RichTextEditorToolbarSettings Items="@Tools"></RichTextEditorToolbarSettings>
+                        <p>Discription</p>
+                    </SfRichTextEditor>
+                </div>
+                <div class="d-inline">
+                    <button type="submit" class="btn-add" @onclick="@FormSubmitted" value="Save">Add</button>
+                    <button class="btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code{
+
+    public class GameFields
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+    private List<GameFields> Games = new List<GameFields>()
+{
+        new GameFields(){ ID= "Game1", Text= "American Football" },
+        new GameFields(){ ID= "Game2", Text= "Badminton" },
+        new GameFields(){ ID= "Game3", Text= "Basketball" },
+        new GameFields(){ ID= "Game4", Text= "Cricket" },
+        new GameFields(){ ID= "Game5", Text= "Football" },
+        new GameFields(){ ID= "Game6", Text= "Golf" },
+        new GameFields(){ ID= "Game7", Text= "Hockey" },
+        new GameFields(){ ID= "Game8", Text= "Rugby"},
+        new GameFields(){ ID= "Game9", Text= "Snooker" },
+        new GameFields(){ ID= "Game10", Text= "Tennis"},
+    };
+
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+{
+    new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontName },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontSize },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.BackgroundColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.LowerCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.UpperCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.SuperScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.SubScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+        new ToolbarItemModel() { Command = ToolbarCommand.Alignments },
+        new ToolbarItemModel() { Command = ToolbarCommand.OrderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.UnorderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.Outdent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Indent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+        new ToolbarItemModel() { Command = ToolbarCommand.Image },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.ClearFormat },
+        new ToolbarItemModel() { Command = ToolbarCommand.Print },
+        new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+        new ToolbarItemModel() { Command = ToolbarCommand.FullScreen },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+        new ToolbarItemModel() { Command = ToolbarCommand.Redo }
+  };
+    public double GrossAmount{
+
+        get{
+            double gross_amount = 0;
+            string tax = Items.Tax;
+            string discount = Items.Discount;
+            double tax_vat = 0.17;
+            double tax_direct = 0.15;
+            double discount_chris = 0.25;
+            double discount_east = 0.18;
+            double net_amount = 0;
+            double calc_amount = 0;
+            try{
+                if (tax == "VAT" && discount == "Chrismass")
+                {
+                    net_amount = Convert.ToDouble(Items.NetAmount);
+                    calc_amount = (net_amount) + (net_amount * Convert.ToDouble(tax_vat));
+                    gross_amount = (calc_amount) - (calc_amount * Convert.ToDouble(discount_chris));
+                }else if (tax == "VAT" && discount == "Fast sales"){
+                    net_amount = Convert.ToDouble(Items.NetAmount);
+                    calc_amount = (net_amount) + (net_amount * Convert.ToDouble(tax_vat));
+                    gross_amount = (calc_amount) - (calc_amount * Convert.ToDouble(discount_east));
+                }else if (tax == "Direct Payment" && discount == "Fast sales"){
+                    net_amount = Convert.ToDouble(Items.NetAmount);
+                    calc_amount = (net_amount) + (net_amount * Convert.ToDouble(tax_direct));
+                    gross_amount = (calc_amount) - (calc_amount * Convert.ToDouble(discount_east));
+                }else if (tax == "Direct Payment" && discount == "Chismass"){
+                    net_amount = Convert.ToDouble(Items.NetAmount);
+                    calc_amount = (net_amount) + (net_amount * Convert.ToDouble(tax_direct));
+                    gross_amount = (calc_amount) - (calc_amount * Convert.ToDouble(discount_chris));
+                }
+            }
+            catch(Exception e){
+                gross_amount = 0;
+            }
+            return gross_amount;
+        }
+    }
+
+    /*protected ItemModel Items {get; set;} = new ItemModel();
+
+    public void FormSubmitted(){
+        Items.GrossAmount = GrossAmount;
+        try
+        {
+            ItemModel new_item = new ItemModel
+            {
+                Id = System.Guid.NewGuid(),
+                ItemName = Items.ItemName,
+                ItemCategory = Items.ItemCategory,
+                ItemQuantity = Items.ItemQuantity,
+                Unit = Items.Unit,
+                NetAmount = Items.NetAmount,
+                Tax = Items.Tax,
+                GrossAmount = Items.GrossAmount,
+                Discount = Items.Discount
+            };
+            _irepository.AddItem(new_item);
+            NavManager.NavigateTo("/add_all");
+
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+    }*/
+
+    protected ItemModel Items { get; set; } = new ItemModel();
+
+    public async void FormSubmitted()
+    {
+        Items.GrossAmount = GrossAmount;
+        try
+        {
+            ItemModel new_item = new ItemModel
+            {
+                Id = System.Guid.NewGuid(),
+                ItemName = Items.ItemName,
+                ItemCategory = Items.ItemCategory,
+                ItemQuantity = Items.ItemQuantity,
+                Unit = Items.Unit,
+                NetAmount = Items.NetAmount,
+                Tax = Items.Tax,
+                GrossAmount = Items.GrossAmount,
+                Discount = Items.Discount
+            };
+            await itemservice.InsertItemAsync(new_item);
+            NavManager.NavigateTo("/add_all");
+
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+    }
+
+}
+

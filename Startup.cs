@@ -9,6 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Syncfusion.Blazor;
+using Scylab.DataItems;
+using EFDataAccess.DataAccess;
+using Scylap.Data.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace ScyLab
 {
@@ -25,13 +30,21 @@ namespace ScyLab
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ItemContext>(options =>
+           {
+               options.UseSqlServer(Configuration.GetConnectionString("Default"));
+           });
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddSyncfusionBlazor();
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IRepository, Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTI1NjA3QDMxMzkyZTMzMmUzMGpHVFF1MjM0T0ZGZDFkZ3JFVzM2b3Vwd21kclppL0VoZXp6YXo1SExTanc9");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

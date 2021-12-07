@@ -1,0 +1,92 @@
+  @page "/sup-items"
+ @using Syncfusion.Blazor.RichTextEditor;
+ <div class="main__item__right">
+     <div class="main__item__right__support">
+        <div class="rich__text">
+           <SfRichTextEditor>
+             <RichTextEditorToolbarSettings Items="@Tools"></RichTextEditorToolbarSettings>
+            <p>Discription</p>
+           </SfRichTextEditor>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn-upload">Upload file</button>
+            <button class="btn-more">Add more</button>
+        </div>
+        <div class="d-flex justify-content-start">
+            <button class="btn-add">Reply</button>
+            <button class="btn-cancel">Close</button>
+        </div>
+        <div class="sup__reports">
+            <div class="sup__reports__user d-flex mb-3">
+                  <img src="Ellipse.png" alt="user">
+                  <div class="reporter__details px-3">
+                      <div><strong class="px-2">Frank Ankasah</strong>example@email.com</div>
+                      <span><p class="px-2">
+                          Tuesday August 10th, 2021 (5:12)
+                      </p></span>
+                      <div class="mt-3">
+                          <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                               ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                               velit esse cillum dolore eu</p>
+                      </div>
+                  </div>
+            </div>
+            <div class="sup__reports__user d-flex">
+                  <img src="Ellipse.png" alt="user">
+                  <div class="reporter__details px-3">
+                      <div><strong class="px-2">Frank Ankasah</strong>example@email.com</div>
+                      <span><p class="px-2">
+                          Tuesday August 10th, 2021 (5:12)
+                      </p></span>
+                      <div class="mt-3">
+                          <p class="px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                               ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                               velit esse cillum dolore eu</p>
+                      </div>
+                  </div>
+            </div>
+        </div>
+        </div>
+     </div>
+
+ @code{
+
+  private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+  {
+    new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontName },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontSize },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.BackgroundColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.LowerCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.UpperCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.SuperScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.SubScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+        new ToolbarItemModel() { Command = ToolbarCommand.Alignments },
+        new ToolbarItemModel() { Command = ToolbarCommand.OrderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.UnorderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.Outdent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Indent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+        new ToolbarItemModel() { Command = ToolbarCommand.Image },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.ClearFormat },
+        new ToolbarItemModel() { Command = ToolbarCommand.Print },
+        new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+        new ToolbarItemModel() { Command = ToolbarCommand.FullScreen },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+        new ToolbarItemModel() { Command = ToolbarCommand.Redo }
+  };
+}
